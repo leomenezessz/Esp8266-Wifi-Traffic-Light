@@ -1,11 +1,16 @@
-from lib.wifi import connect_to_wifi, is_connected, show_network
+from lib.logging import Logger
+from lib.wifi import WifiManager
+
+logger = Logger(__name__)
 
 
 def main():
-    connect_to_wifi('***********', '***********')
+    logger.info("Boot module is starting...")
 
-    if is_connected():
-        print("Connected to the network : ", show_network())
+    wifi = WifiManager('Americana 2.4G', 'lully360')
+
+    if wifi.is_connected():
+        logger.info("Connected to the network : " + wifi.network_config())
 
 
 if __name__ == '__main__':

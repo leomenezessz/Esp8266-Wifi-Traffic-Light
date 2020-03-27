@@ -1,9 +1,14 @@
-from lib.board import PinsOutputManager
-from lib.socket_manager import SocketManager
+from lib.bridge import Bridge
+from lib.logging import Logger
+from lib.server import SocketManager
+
+logger = Logger(__name__)
 
 
 def main():
-    SocketManager(url="", port=80, listen=10, pins=PinsOutputManager(green=12, yellow=13, red=2)).start()
+    logger.info("Main module is starting...")
+
+    SocketManager(url="", port=3333, listen=10, bridge=Bridge(0, 9600)).start()
 
 
 if __name__ == '__main__':
