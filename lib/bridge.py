@@ -1,12 +1,8 @@
 import machine
 
-from lib.logging import Logger
-
 RED = "/red"
 YELLOW = "/yellow"
 GREEN = "/green"
-
-logger = Logger(__name__)
 
 
 class Bridge:
@@ -23,8 +19,6 @@ class Bridge:
 
         self.bridge = machine.UART(identification, baud)
 
-        logger.info("Serial port is enabled with id : " + str(identification) + " and baud : " + str(baud))
-
     def send_data(self, data):
         """
 
@@ -37,18 +31,11 @@ class Bridge:
         """
 
         if GREEN in data:
-            logger.info("Received a request to the path :" + GREEN)
             self.bridge.write("green")
         elif YELLOW in data:
-            logger.info("Received a request to the path: " + YELLOW)
             self.bridge.write("yellow")
         elif RED in data:
-            logger.info("Received a request to the path" + RED)
             self.bridge.write("red")
         else:
-            logger.warning("Invalid request : " + str(data))
             return False
-
-        logger.info("Data has been sent to arduíno")
-
         return True

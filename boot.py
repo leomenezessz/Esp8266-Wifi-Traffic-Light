@@ -5,8 +5,6 @@ logger = Logger(__name__)
 
 
 def main():
-    logger.info("Boot module is starting...")
-
     wifi = WifiManager('Americana 2.4G', 'lully360')
 
     if wifi.is_connected():
