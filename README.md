@@ -24,11 +24,11 @@ This project is a sample of a webserver with micro-python and the esp8266. This 
 
 #### Flash Connection
 
-<img src="docs/esp8266-usb.jpg" alt="flash" width="450" height="450"/>
+<img src="docs/esp8266-usb.jpg" alt="flash" width="700" height="450"/>
 
 #### Arduíno X ESP8266 Connection
 
-<img src="docs/arduino-esp8266.jpg" alt="connection" width="450" height="450"/>
+<img src="docs/arduino-esp8266.jpg" alt="connection" width="800" height="450"/>
 
 <br>
 <br>
