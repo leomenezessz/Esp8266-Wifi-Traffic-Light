@@ -1,5 +1,4 @@
 from time import sleep
-
 import network
 
 
@@ -23,4 +22,4 @@ class WifiManager:
         return self.wlan.isconnected()
 
     def show_networks(self):
-        return self.wlan.ifconfig()
+        return str(self.wlan.ifconfig())

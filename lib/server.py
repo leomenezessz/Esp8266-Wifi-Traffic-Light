@@ -16,7 +16,7 @@ class SocketManager:
         :param url: Server url.
         :param port: Server port.
         :param listen: Simultaneous users.
-        :param bridge: A bridge to serial communication and the paths requests pattern.
+        :param bridge: A bridge to serial communication and the paths of requests pattern.
 
         """
 

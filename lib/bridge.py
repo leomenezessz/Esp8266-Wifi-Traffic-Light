@@ -3,6 +3,9 @@ import machine
 RED = "/red"
 YELLOW = "/yellow"
 GREEN = "/green"
+LIGHT_RED = "red"
+LIGHT_YELLOW = "yellow"
+LIGHT_GREEN = "green"
 
 
 class Bridge:
@@ -31,11 +34,11 @@ class Bridge:
         """
 
         if GREEN in data:
-            self.bridge.write("green")
+            self.bridge.write(LIGHT_GREEN)
         elif YELLOW in data:
-            self.bridge.write("yellow")
+            self.bridge.write(LIGHT_YELLOW)
         elif RED in data:
-            self.bridge.write("red")
+            self.bridge.write(LIGHT_RED)
         else:
             return False
         return True

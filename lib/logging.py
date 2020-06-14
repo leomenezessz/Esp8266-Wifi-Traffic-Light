@@ -1,16 +1,11 @@
 import sys
 
-CRITICAL = 50
 ERROR = 40
-WARNING = 30
 INFO = 20
 DEBUG = 10
-NOTSET = 0
 
 _level_dict = {
-    CRITICAL: "CRIT",
     ERROR: "ERROR",
-    WARNING: "WARN",
     INFO: "INFO",
     DEBUG: "DEBUG",
 }
@@ -19,9 +14,9 @@ _stream = sys.stderr
 
 
 class Logger:
-    level = NOTSET
 
     def __init__(self, name):
+        self.level = None
         self.name = name
 
     def _level_str(self, level):
@@ -29,12 +24,6 @@ class Logger:
         if l is not None:
             return l
         return "LVL%s" % level
-
-    def setLevel(self, level):
-        self.level = level
-
-    def isEnabledFor(self, level):
-        return level >= (self.level or _level)
 
     def log(self, level, msg, *args):
         if level >= (self.level or _level):
@@ -50,21 +39,8 @@ class Logger:
     def info(self, msg, *args):
         self.log(INFO, msg, *args)
 
-    def warning(self, msg, *args):
-        self.log(WARNING, msg, *args)
-
     def error(self, msg, *args):
         self.log(ERROR, msg, *args)
-
-    def critical(self, msg, *args):
-        self.log(CRITICAL, msg, *args)
-
-    def exc(self, e, msg, *args):
-        self.log(ERROR, msg, *args)
-        sys.print_exception(e, _stream)
-
-    def exception(self, msg, *args):
-        self.exc(sys.exc_info()[1], msg, *args)
 
 
 _level = INFO
@@ -87,12 +63,3 @@ def debug(msg, *args):
     getLogger(None).debug(msg, *args)
 
 
-def basicConfig(level=INFO, filename=None, stream=None, format=None):
-    global _level, _stream
-    _level = level
-    if stream:
-        _stream = stream
-    if filename is not None:
-        print("logging.basicConfig: filename arg is not supported")
-    if format is not None:
-        print("logging.basicConfig: format arg is not supported")
