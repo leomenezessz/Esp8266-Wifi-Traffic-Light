@@ -7,8 +7,9 @@ verify_ssl = true
 
 [packages]
 pyserial="==3.4"
-docopt = "==0.6.2"
-adafruit-ampy = "==1.0.5"
+docopt="==0.6.2"
+adafruit-ampy="==1.0.5"
+esptool="==2.8"
 
 [requires]
 python_version = "3.7"
